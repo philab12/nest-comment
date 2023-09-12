@@ -12,6 +12,7 @@ export const dataSourceOptions: DataSourceOptions = {
     database: `${process.env.POSTGRES_DB}`,
     entities: ['dist/**/*.entity.js'],
     migrations: ['dist/db/migrations/*.js'],
+    synchronize:JSON.parse(`${process.env.POSTGRES_SYNCHRONIZE}`)
 }
 
 const dataSource = new DataSource(dataSourceOptions);
