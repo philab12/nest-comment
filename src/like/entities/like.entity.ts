@@ -3,7 +3,7 @@ import { PostEntity } from "src/post/entities/post.entity";
 import { User } from "src/user/entities/user.entity";
 import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm";
 
-enum Type{
+export enum Type{
     happy = "happy",
     sad = "sad",
     angry = "angry",

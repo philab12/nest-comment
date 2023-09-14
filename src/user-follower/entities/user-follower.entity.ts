@@ -2,7 +2,7 @@ import { GenericEntity } from "src/generic/generic.entity";
 import { User } from "src/user/entities/user.entity";
 import {Entity, Column, PrimaryColumn, ManyToOne, JoinColumn, PrimaryGeneratedColumn} from "typeorm";
 
-enum Status{
+export enum Status{
     blocked = "blocked",
     accepted = "accepted",
     pending = "pending"
@@ -24,5 +24,5 @@ export class UserFollowerEntity extends GenericEntity {
  
     
     @Column({type:"enum", enum: Status, default: Status.pending})
-    status:Status
+    status:string
 }
