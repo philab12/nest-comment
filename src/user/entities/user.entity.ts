@@ -2,14 +2,15 @@ import { CommentEntity } from "src/comment/entities/comment.entity";
 import { GenericEntity } from "src/generic/generic.entity";
 import { LikeEntity } from "src/like/entities/like.entity";
 import { PostEntity } from "src/post/entities/post.entity";
+import { UserFollowerEntity } from "src/user-follower/entities/user-follower.entity";
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 
-enum Roles {
+export enum Roles {
    user = "user",
    admin = "admin",
 };
 
-@Entity("users")
+@Entity({name: "users"})
 export class User extends GenericEntity {
 
     @PrimaryGeneratedColumn()
@@ -36,4 +37,10 @@ export class User extends GenericEntity {
 
     @OneToMany(() => LikeEntity, (like:LikeEntity) => like.user)
     likes: LikeEntity[]
+
+    @OneToMany(() => UserFollowerEntity, (u:UserFollowerEntity) => u.follower)
+    followers: UserFollowerEntity[]
+
+    @OneToMany(() => UserFollowerEntity, (uf:UserFollowerEntity) => uf.following)
+    followings: UserFollowerEntity[]
 }
